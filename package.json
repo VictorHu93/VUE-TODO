@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "localbase": "^0.7.5",
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.14",
+    "vue-easy-dnd": "^1.22.0",
     "vue-router": "^3.5.1",
     "vuetify": "^2.6.0",
     "vuex": "^3.6.2"
