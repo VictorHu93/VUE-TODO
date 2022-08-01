@@ -15,10 +15,10 @@
 
                 <v-icon left>{{ item.icone }}</v-icon>
 
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item-title>{{ (item.title) }}</v-list-item-title>
                 </v-list-item>
             </v-list>
-        </v-menu>
+        </v-menu>   
         <ModalEditar 
         v-if="items[0].modal"
         @fechaModal="items[0].modal = false"
@@ -42,16 +42,16 @@ export default {
         items: [
             {
                 icone: "mdi-pencil",
-                title: "Editar",
+                title: ('Editar'),
                 modal:false,
                 click() {
-                    console.log("Editar");
+                    console.log('Editar');
                     this.modal = true
                 }
             },
             {
                 icone: "mdi-trash-can",
-                title: "Excluir",
+                title: ('Excluir'),
                 modal: false,
                 click() {
                     console.log("Excluir");

@@ -6,85 +6,51 @@
     </v-navigation-drawer> -->
     <!-- </v-navigation-drawer> -->
     <v-navigation-drawer v-model="drawer" app grey dark>
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="text-h6">
-            Collections
-          </v-list-item-title>
-          <v-list-item-subtitle>
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
+      <div class="pt-5 text-center">
+        <v-avatar size="80">
+          <img src="./assets/luck.jpeg" alt="">
+        </v-avatar>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="text-h6">
+              Vue.js
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              {{ $t("message.Lista_de_Tarefas") }}
+            </v-list-item-subtitle>
+
+            <v-overflow-btn v-model="language" @change="changeLanguage()" class="my-2" :items="dropdown_edit"
+            :label="$t('message.Seleciona_a_Linguagem')">
+            </v-overflow-btn>
+
+          </v-list-item-content>
+        </v-list-item>
+      </div>
 
       <v-divider></v-divider>
 
-      <v-list dense nav >
-        <v-list-item v-for="item in items" :key="item.title"
-        :to="item.to"
-         link>
+      <v-list dense nav>
+        <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title>{{ $t('message.Pessoal') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-
     <!-- <v-app-bar app> 
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Application</v-toolbar-title>
     </v-app-bar> -->
-    <v-app-bar
-      app
-      dark
-      >
-      
+    <v-app-bar app dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      
-      <v-btn icon >
-        <v-icon>mdi-view-dashboard</v-icon>
-      </v-btn>
-
-      <v-btn icon >
-        <v-icon>mdi-folder-open</v-icon>
-      </v-btn>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-      class="mx-1"
-      x-small
-      fab
-      dark
-      color="pink"
-    >
-      <v-icon dark>
-        mdi-plus
-      </v-icon>
-    </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-bell</v-icon>
-      </v-btn>
-
-     <v-avatar>
-      <img
-        src="https://cdn.vuetifyjs.com/images/john.jpg"
-        alt="luck"
-      >
-    </v-avatar>
     </v-app-bar>
 
     <v-main class="grey darken-4">
-      <router-view/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
@@ -92,14 +58,29 @@
 <script>
 export default {
   data: () => ({
+    language: null,
     drawer: null,
+    dropdown_edit: [
+      { text: 'pt' },
+      { text: 'en' },
+    ],
     items: [
-      { title: 'School', icon: 'mdi-book-open-variant', to:'/School' },
-      { title: 'Personal', icon: 'mdi-account', to:'/' },
-      { title: 'Design', icon: 'mdi-fountain-pen', to:'/Design' },
+      {   icon: 'mdi-account', to: '/' },
     ],
   }),
-}
+  methods: {
+    changeLanguage() {
+      localStorage.setItem("lang", this.language)
+      window.location.reload();
+    }
+  },
+  created() {
+    if (localStorage.getItem("lang") == null) {
+      localStorage.setItem('lang', "pt")
+    }
+    this.laguage = localStorage.getItem("lang");
+  },
+};
 </script>
 
 <style scoped>

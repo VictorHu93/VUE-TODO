@@ -3,7 +3,7 @@
     <v-col cols="12" md="6" sm="6">   
       <div class="rounded pink">
     <v-list-item dark
-    @click="concluiTarefa(tarefa.id)"
+    @click="$store.dispatch('concluiTarefa', tarefa)"
     >
           <template v-slot:default="{}">
             <v-list-item-action>
