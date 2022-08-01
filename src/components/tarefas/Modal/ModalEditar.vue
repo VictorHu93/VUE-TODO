@@ -3,21 +3,21 @@
         <v-dialog v-model="dialog" persistent max-width="290">
             <v-card>
                 <v-card-title class="text-h5">
-                    Editar
+                    {{ $t('message.Editar') }}
                 </v-card-title>
                 <v-divider></v-divider>
-                <v-card-text class="mt-2">Informe o novo titulo.</v-card-text>
+                <v-card-text class="mt-2">{{$t('message.titulo')}}</v-card-text>
 
-                <v-text-field class="px-3" label="Titulo" outlined v-model="titulo"
+                <v-text-field class="px-3" label="" outlined v-model="titulo"
                 ></v-text-field>
 
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="red darken-1" text @click="$emit('fechaModal')">
-                        Cancelar
+                        {{$t('message.Cancelar')}}
                     </v-btn>
                     <v-btn color="green darken-1" text @click="handleEditar()">
-                        Editar
+                        {{$t('message.Editar')}}
                     </v-btn>
                 </v-card-actions>
             </v-card>
